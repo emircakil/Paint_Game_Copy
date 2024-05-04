@@ -12,6 +12,6 @@ public class SwitchToPen : MonoBehaviour
     
         eraser.SetActive(false);
         pen.SetActive(true);
-
+     
     }
 }

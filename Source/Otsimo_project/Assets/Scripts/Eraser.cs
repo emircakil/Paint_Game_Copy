@@ -1,31 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Eraser : MonoBehaviour
-{
-    public float eraserSize = 0.1f;
+{ 
+    public float circleRadius = 1.0f;
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, eraserSize);
+        // Fare pozisyonunu al
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Camera.main.nearClipPlane; // Uzaklığı kameranın yakın düzlemine ayarla
 
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.CompareTag("Line"))
-                {
-                    Destroy(collider.gameObject);
-                }
-            }
-        }
+        // Fare pozisyonunu 3D dünyadaki bir noktaya dönüştür
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Dairenin konumunu fare pozisyonu olarak ayarla
+        transform.position = worldPosition;
+
+        // Dairenin boyutunu güncelle
+        transform.localScale = new Vector3(circleRadius * 2, circleRadius * 2, 1);
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
+        // Gizmo olarak daireyi çiz
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, eraserSize);
+        Gizmos.DrawWireSphere(transform.position, circleRadius);
     }
 }
+
+
