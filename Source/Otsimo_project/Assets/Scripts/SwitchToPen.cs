@@ -7,7 +7,6 @@ public class SwitchToPen : MonoBehaviour
 {
     public GameObject eraser;
     public GameObject pen;
-
     public void OnClick() { 
     
         eraser.SetActive(false);

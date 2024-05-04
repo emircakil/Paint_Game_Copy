@@ -2,30 +2,17 @@
 using UnityEngine;
 
 public class Eraser : MonoBehaviour
-{ 
-    public float circleRadius = 1.0f;
+{
 
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        // Fare pozisyonunu al
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Camera.main.nearClipPlane; // Uzaklığı kameranın yakın düzlemine ayarla
-
-        // Fare pozisyonunu 3D dünyadaki bir noktaya dönüştür
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        // Dairenin konumunu fare pozisyonu olarak ayarla
-        transform.position = worldPosition;
-
-        // Dairenin boyutunu güncelle
-        transform.localScale = new Vector3(circleRadius * 2, circleRadius * 2, 1);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Gizmo olarak daireyi çiz
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, circleRadius);
+        if (collision.gameObject.tag == "Line")
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }
 
