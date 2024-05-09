@@ -6,7 +6,7 @@ public class Eraser : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Line")
+        if (collision.gameObject.tag == "Line" || collision.gameObject.tag == "Star")
         {
             if (Input.GetMouseButton(0))
             {
