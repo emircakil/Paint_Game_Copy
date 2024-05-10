@@ -1,29 +1,51 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Unity.VisualScripting;
+using UnityEngine;
 
-public class BucketFill : MonoBehaviour, IPointerClickHandler
+public class FloodFill : MonoBehaviour
 {
-    public GameObject prefabToSpawn; // Oluşturulacak nesnenin prefabı
-    public Color fillColor; // Doldurulacak renk
-    public LayerMask layerMask; // Kenarları belirlemek için kullanılacak layer mask
+    public GameObject paintPrefab;
+    HashSet<int> visited = new HashSet<int>();
+    bool isMustStop = false;
+ 
 
-    // Tıklama olayını algılayan fonksiyon
-    public void OnPointerClick(PointerEventData eventData)
+
+
+    private void Update()
     {
-        // Tıklama noktasının koordinatlarını al
-        Vector3 worldPosition = eventData.pointerCurrentRaycast.worldPosition;
-
-        // Raycast ile tıklanan noktanın üzerindeki colliderı bul
-        Collider2D hitCollider = Physics2D.OverlapPoint(worldPosition, layerMask);
-
-        // Kenara tıklandığını kontrol et
-        if (hitCollider != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            // Nesne oluştur ve pozisyonunu belirle
-            GameObject newObj = Instantiate(prefabToSpawn, worldPosition, Quaternion.identity);
+          
 
-            // Nesne rengini doldurulacak renk olarak ayarla
-            newObj.GetComponent<Renderer>().material.color = fillColor;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            visited = new HashSet<int>();
+            floodFill(mousePosition, 20);
+            
+          
+           
         }
     }
+
+    void floodFill(Vector2 objectPosition , int n)
+    {
+
+        if (visited.Contains(n) || visited.Count > 100)
+            return;
+        visited.Add(n);
+        GameObject paintInstance = Instantiate(paintPrefab, objectPosition, Quaternion.identity);
+        Debug.Log(isMustStop);
+
+        if (!isMustStop)
+        {
+            floodFill(new Vector2(objectPosition.x, objectPosition.y + 0.2f), n - 1);
+            floodFill(new Vector2(objectPosition.x, objectPosition.y - 0.2f), n - 1);
+            floodFill(new Vector2(objectPosition.x + 0.2f, objectPosition.y), n - 1);
+            floodFill(new Vector2(objectPosition.x - 0.2f, objectPosition.y), n - 1);
+        }
+
+    }
+    
+
 }

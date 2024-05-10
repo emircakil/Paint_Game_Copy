@@ -819,11 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6731c26ca367ad44b89660127c10b0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 0}
-  fillColor: {r: 1, g: 0, b: 0, a: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  paintPrefab: {fileID: 6631161095261773780, guid: f877e0ea66ea8794cab0c4b56b8e5c08, type: 3}
 --- !u!1 &1145241804
 GameObject:
   m_ObjectHideFlags: 0
