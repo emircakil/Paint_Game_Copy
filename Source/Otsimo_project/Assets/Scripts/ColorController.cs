@@ -5,55 +5,56 @@ using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BucketColorController : MonoBehaviour
+public class ColorController : MonoBehaviour
 {
-    Color color;
+    Color color_;
     private void Awake()
     {
-        color = Color.black;
+        color_ = Color.black;
     }
-    public Color getColor() {
+    public Color getColor()
+    {
 
-        return color;
+        return color_;
     }
     public void setBlack()
     {
 
-        color = Color.black;
+        color_ = Color.black;
     }
     public void setWhite()
     {
 
-        color = Color.white;
+        color_ = Color.white;
     }
     public void setRed()
     {
 
-        color = Color.red;
+        color_ = Color.red;
     }
     public void setOrange()
     {
 
-        color = new Color(1.0f, 0.5f, 0.0f);
+        color_ = new Color(1.0f, 0.5f, 0.0f);
     }
     public void setPurple()
     {
 
-        color = new Color(0.5f, 0.0f, 0.5f);
+        color_ = new Color(0.5f, 0.0f, 0.5f);
     }
     public void setYellow()
     {
 
-        color = Color.yellow;
+        color_ = Color.yellow;
     }
     public void setBlue()
     {
 
-        color = Color.blue;
+        color_ = Color.blue;
     }
     public void setGreen()
     {
 
-        color = Color.green;
+        color_ = Color.green;
     }
 }

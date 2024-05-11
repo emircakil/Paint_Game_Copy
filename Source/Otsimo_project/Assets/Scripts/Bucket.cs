@@ -9,12 +9,12 @@ public class Bucket : MonoBehaviour
 {
     
     [SerializeField]Camera cam;
-    Color color;
-    BucketColorController bucketColorController;
+    Color color_;
+    ColorController colorController;
 
     private void Awake()
     {
-        bucketColorController = FindObjectOfType<BucketColorController>();
+        colorController = FindObjectOfType<ColorController>();
     }
     private void Update()
     {
@@ -23,8 +23,8 @@ public class Bucket : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            color = bucketColorController.getColor();
-            cam.backgroundColor = color;
+            color_ = colorController.getColor();
+            cam.backgroundColor = color_;
 
         }
 

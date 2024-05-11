@@ -7,6 +7,15 @@ public class LineGenerator : MonoBehaviour
     public GameObject linePrefab;
 
     Line activeLine;
+    Material material;
+    Color color_;
+    ColorController colorController;
+
+
+    private void Awake()
+    {
+        colorController = FindObjectOfType<ColorController>();
+    }
 
     private void OnEnable()
     {
@@ -18,6 +27,9 @@ public class LineGenerator : MonoBehaviour
         {
 
             GameObject newLine = Instantiate(linePrefab);
+            color_ = colorController.getColor();
+            LineRenderer lineRenderer = newLine.GetComponent<LineRenderer>();
+            lineRenderer.material.color = color_;
             activeLine = newLine.GetComponent<Line>();
 
         }
