@@ -8,6 +8,7 @@ public class PenController : MonoBehaviour
     public GameObject pen;
     public GameObject bucket;
     public GameObject star;
+    public GameObject paintball;
     public void switchPen()
     {
 
@@ -15,6 +16,7 @@ public class PenController : MonoBehaviour
         eraser.SetActive(false);
         bucket.SetActive(false);
         star.SetActive(false);
+        paintball.SetActive(false);
     }
 
     public void switchErase()
@@ -24,6 +26,7 @@ public class PenController : MonoBehaviour
         eraser.SetActive(true);
         bucket.SetActive(false);
         star.SetActive(false);
+        paintball.SetActive(false);
     }
 
     public void switchBucket()
@@ -33,6 +36,7 @@ public class PenController : MonoBehaviour
         eraser.SetActive(false);
         bucket.SetActive(true);
         star.SetActive(false);
+        paintball.SetActive(false);
     }
 
     public void switchStar()
@@ -42,5 +46,15 @@ public class PenController : MonoBehaviour
         eraser.SetActive(false);
         bucket.SetActive(false);
         star.SetActive(true);
+        paintball.SetActive(false);
+    }
+
+    public void switchPaintball() {
+
+        pen.SetActive(false);
+        eraser.SetActive(false);
+        bucket.SetActive(false);
+        star.SetActive(false);
+        paintball.SetActive(true);
     }
 }

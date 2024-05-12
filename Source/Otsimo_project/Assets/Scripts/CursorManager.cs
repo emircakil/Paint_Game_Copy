@@ -8,6 +8,7 @@ public class CursorManager : MonoBehaviour
     [SerializeField] private Texture2D eraserTexture;
     [SerializeField] private Texture2D bucketTexture;
     [SerializeField] private Texture2D starTexture;
+    [SerializeField] private Texture2D paintballTexture;
     private Vector2 cursorHotspot;
     string name;
     public void setPen()
@@ -32,5 +33,11 @@ public class CursorManager : MonoBehaviour
         cursorHotspot = new Vector2(bucketTexture.width / 2 - bucketTexture.width / 3.5f, bucketTexture.height / 2 - bucketTexture.height / 3.5f);
         Cursor.SetCursor(bucketTexture, cursorHotspot, CursorMode.Auto);
     }
- 
+
+    public void setPaintball()
+    {
+        cursorHotspot = new Vector2(paintballTexture.width / 2 - paintballTexture.width / 3.5f, paintballTexture.height / 2 - paintballTexture.height / 3.5f);
+        Cursor.SetCursor(paintballTexture, cursorHotspot, CursorMode.Auto);
+    }
+
 }
