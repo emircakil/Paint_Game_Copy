@@ -10,11 +10,14 @@ public class LineGenerator : MonoBehaviour
     Material material;
     Color color_;
     ColorController colorController;
+    [SerializeField] GameObject layerObject;
+    LayerManager layerManager;
 
 
     private void Awake()
     {
         colorController = FindObjectOfType<ColorController>();
+        layerManager = layerObject.gameObject.GetComponent<LayerManager>();
     }
 
     private void OnEnable()
@@ -30,8 +33,9 @@ public class LineGenerator : MonoBehaviour
             color_ = colorController.getColor();
             LineRenderer lineRenderer = newLine.GetComponent<LineRenderer>();
             lineRenderer.material.color = color_;
+            lineRenderer.sortingOrder = layerManager.getLayer();
             activeLine = newLine.GetComponent<Line>();
-
+            
         }
 
         if (Input.GetMouseButtonUp(0))

@@ -11,6 +11,13 @@ public class PaintballGun : MonoBehaviour
     PaintballPrefab paintballPrefab;
     [SerializeField] GameObject colorGameObject;
     ColorController colorController;
+    [SerializeField] GameObject layerObject;
+    LayerManager layerManager;
+
+    private void Awake()
+    {
+        layerManager = layerObject.gameObject.GetComponent<LayerManager>();
+    }
 
     void Update()
     {
@@ -22,7 +29,7 @@ public class PaintballGun : MonoBehaviour
             paintballPrefab = paintInstance.GetComponent<PaintballPrefab>();
             spriteRenderer = paintInstance.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = paintballPrefab.getSprite(colorController.getColorWName());
-
+            spriteRenderer.sortingOrder = layerManager.getLayer();
         }
     }
 }

@@ -1357,6 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paintPrefab: {fileID: 5824039586835133570, guid: 69eb49d29a6a2284882b3df906433f95, type: 3}
   colorGameObject: {fileID: 1532093499}
+  layerObject: {fileID: 2113050125}
 --- !u!1 &1019763290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintPrefab: {fileID: 8984356649855461925, guid: d267d188612fc3f48b4ee42cf8422901, type: 3}
+  layerObject: {fileID: 2113050125}
 --- !u!1 &1485808311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,6 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 5996528692170927397, guid: 8dc6eb6cbcf89e645902e5358703e679, type: 3}
+  layerObject: {fileID: 2113050125}
 --- !u!4 &1740077247
 Transform:
   m_ObjectHideFlags: 0
@@ -3114,6 +3117,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021047548}
   m_CullTransparentMesh: 1
+--- !u!1 &2113050125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113050126}
+  - component: {fileID: 2113050127}
+  m_Layer: 0
+  m_Name: LayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113050126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113050125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 682.0659, y: 565.6498, z: -7.207383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113050127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113050125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fcde150e3905b3428e234288c2022c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2123968980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,3 +3308,4 @@ SceneRoots:
   - {fileID: 534378941}
   - {fileID: 1019763291}
   - {fileID: 1532093501}
+  - {fileID: 2113050126}
