@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb62b0719e268284ca50e0fc9c616950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintPrefab: {fileID: 8984356649855461925, guid: d267d188612fc3f48b4ee42cf8422901, type: 3}
+  paintPrefab: {fileID: 8226784439640703441, guid: e70896864c43b4547bbc35db0f690117, type: 3}
   layerObject: {fileID: 2113050125}
 --- !u!1 &1485808311
 GameObject:
