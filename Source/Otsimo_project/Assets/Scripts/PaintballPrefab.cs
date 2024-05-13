@@ -5,7 +5,7 @@ using UnityEngine;
 public class PaintballPrefab : MonoBehaviour
 {
     Sprite sprite;
-
+    
     [SerializeField] Sprite blackSprite;
     [SerializeField] Sprite whiteSprite;
     [SerializeField] Sprite blueSprite;

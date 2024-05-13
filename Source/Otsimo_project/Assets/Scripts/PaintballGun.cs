@@ -13,10 +13,13 @@ public class PaintballGun : MonoBehaviour
     ColorController colorController;
     [SerializeField] GameObject layerObject;
     LayerManager layerManager;
+    ParticleSystem particalSystem;
+    
 
     private void Awake()
     {
         layerManager = layerObject.gameObject.GetComponent<LayerManager>();
+       
     }
 
     void Update()
@@ -30,6 +33,11 @@ public class PaintballGun : MonoBehaviour
             spriteRenderer = paintInstance.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = paintballPrefab.getSprite(colorController.getColorWName());
             spriteRenderer.sortingOrder = layerManager.getLayer();
+            particalSystem = paintInstance.GetComponentInChildren<ParticleSystem>();
+            particalSystem.startColor = colorController.getColor();
+            
+            
+           
         }
     }
 }

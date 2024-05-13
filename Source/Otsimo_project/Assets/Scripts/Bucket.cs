@@ -19,8 +19,6 @@ public class Bucket : MonoBehaviour
     private void Update()
     {
      
-        
-
         if (Input.GetMouseButtonDown(0))
         {
             color_ = colorController.getColor();
