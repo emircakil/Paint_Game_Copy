@@ -14,12 +14,13 @@ public class PaintballGun : MonoBehaviour
     [SerializeField] GameObject layerObject;
     LayerManager layerManager;
     ParticleSystem particalSystem;
+    [SerializeField]AudioSource paintballSound;
     
 
     private void Awake()
     {
         layerManager = layerObject.gameObject.GetComponent<LayerManager>();
-       
+        
     }
 
     void Update()
@@ -35,6 +36,8 @@ public class PaintballGun : MonoBehaviour
             spriteRenderer.sortingOrder = layerManager.getLayer();
             particalSystem = paintInstance.GetComponentInChildren<ParticleSystem>();
             particalSystem.startColor = colorController.getColor();
+            paintballSound.Play();
+
             
             
            
