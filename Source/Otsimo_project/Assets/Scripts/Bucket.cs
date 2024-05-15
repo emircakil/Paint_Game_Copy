@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Bucket : MonoBehaviour
 {
@@ -21,9 +22,11 @@ public class Bucket : MonoBehaviour
      
         if (Input.GetMouseButtonDown(0))
         {
-            color_ = colorController.getColor();
-            cam.backgroundColor = color_;
-
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                color_ = colorController.getColor();
+                cam.backgroundColor = color_;
+            }
         }
 
     }

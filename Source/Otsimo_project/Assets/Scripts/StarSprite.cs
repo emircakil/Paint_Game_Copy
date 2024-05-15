@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PaintController : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class PaintController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);   
-            GameObject paintInstance = Instantiate(paintPrefab, mousePosition, Quaternion.identity);
-            paintInstance.GetComponent<Renderer>().sortingOrder = layerManager.getLayer();
-            starSound.Play();
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameObject paintInstance = Instantiate(paintPrefab, mousePosition, Quaternion.identity);
+                paintInstance.GetComponent<Renderer>().sortingOrder = layerManager.getLayer();
+                starSound.Play();
+            }
         }
     }
 }

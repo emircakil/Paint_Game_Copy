@@ -8,6 +8,7 @@ TagManager:
   - Star
   - Bucket
   - PaintballGun
+  - UI
   layers:
   - Default
   - TransparentFX

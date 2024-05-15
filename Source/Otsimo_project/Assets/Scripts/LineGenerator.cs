@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LineGenerator : MonoBehaviour
 {
@@ -28,14 +29,15 @@ public class LineGenerator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
-            GameObject newLine = Instantiate(linePrefab);
-            color_ = colorController.getColor();
-            LineRenderer lineRenderer = newLine.GetComponent<LineRenderer>();
-            lineRenderer.material.color = color_;
-            lineRenderer.sortingOrder = layerManager.getLayer();
-            activeLine = newLine.GetComponent<Line>();
-            
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                GameObject newLine = Instantiate(linePrefab);
+                color_ = colorController.getColor();
+                LineRenderer lineRenderer = newLine.GetComponent<LineRenderer>();
+                lineRenderer.material.color = color_;
+                lineRenderer.sortingOrder = layerManager.getLayer();
+                activeLine = newLine.GetComponent<Line>();
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
