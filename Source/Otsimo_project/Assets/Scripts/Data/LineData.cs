@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineData : MonoBehaviour
+public class LineData 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float xPosition;
+    public float yPosition;
+    public float zPosition;
+    public int layer;
 }

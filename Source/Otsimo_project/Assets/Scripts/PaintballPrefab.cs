@@ -5,7 +5,7 @@ using UnityEngine;
 public class PaintballPrefab : MonoBehaviour
 {
     Sprite sprite;
-    
+    string spriteName;
     [SerializeField] Sprite blackSprite;
     [SerializeField] Sprite whiteSprite;
     [SerializeField] Sprite blueSprite;
@@ -22,7 +22,7 @@ public class PaintballPrefab : MonoBehaviour
     }
 
     public Sprite getSprite(string color) {
-
+        spriteName = color;
         switch (color)
         {
             case "black":
@@ -55,5 +55,10 @@ public class PaintballPrefab : MonoBehaviour
         }
         return sprite;
           
+    }
+
+    public string getSpriteName() {
+
+        return spriteName;
     }
 }

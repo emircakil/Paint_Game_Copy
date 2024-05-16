@@ -16,6 +16,7 @@ public class PaintballGun : MonoBehaviour
     LayerManager layerManager;
     ParticleSystem particalSystem;
     [SerializeField]AudioSource paintballSound;
+    ParticleSystem particle;
     
 
     private void Awake()
@@ -48,6 +49,23 @@ public class PaintballGun : MonoBehaviour
             }
             
            
+        }
+    }
+
+    public void MakeInstance(List<PaintballData> list) {
+        
+        foreach (PaintballData data in list)
+        {
+
+            Vector2 pos = new Vector2(data.xPosition, data.yPosition);
+            GameObject paintInstance = Instantiate(paintPrefab, pos, Quaternion.identity);
+            paintballPrefab = paintInstance.GetComponent<PaintballPrefab>();
+            spriteRenderer = paintInstance.GetComponent <SpriteRenderer>();
+            spriteRenderer.sprite = paintballPrefab.getSprite(data.colorWName);
+            particle = paintInstance.GetComponentInChildren<ParticleSystem>();
+            particle.Stop();
+
+
         }
     }
 }

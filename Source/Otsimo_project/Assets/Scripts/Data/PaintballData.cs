@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaintballData : MonoBehaviour
+public class PaintballData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string colorWName;
+    public float xPosition;
+    public float yPosition;
+    public float zPosition;
+    public int layer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

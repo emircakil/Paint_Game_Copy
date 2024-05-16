@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starDrawObject: {fileID: 1443013235}
+  paintballDrawObject: {fileID: 943024943}
 --- !u!4 &322318716
 Transform:
   m_ObjectHideFlags: 0
@@ -1834,7 +1835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &943024944
 Transform:
   m_ObjectHideFlags: 0
@@ -3699,7 +3700,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 322318715}
         m_TargetAssemblyTypeName: JsonWriteSystem, Assembly-CSharp
-        m_MethodName: LoadStar
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

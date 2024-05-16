@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class JsonWriteSystem : MonoBehaviour
 {
     public GameObject starDrawObject;
     StarSprite star;
+    public GameObject paintballDrawObject;
+    PaintballGun paintball;
     
     private void Start()
     {
       star = starDrawObject.GetComponent<StarSprite>();
+      paintball = paintballDrawObject.GetComponent<PaintballGun>();
     }
 
     public void SaveToJson() {
@@ -22,7 +27,33 @@ public class JsonWriteSystem : MonoBehaviour
         SavePaintballs();
 
     }
+    public void SavePaintballs()
+    {
 
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("PaintballGun");
+        PaintballData data = new PaintballData(); 
+        var sb = new StringBuilder();
+
+        foreach (var obj in objects)
+        {
+            PaintballPrefab paintballPrefab = obj.GetComponent<PaintballPrefab>();
+
+            data.colorWName = paintballPrefab.getSpriteName();
+            data.xPosition = obj.transform.position.x;
+            data.yPosition = obj.transform.position.y;
+            data.zPosition = obj.transform.position.z;
+            data.layer = obj.layer;
+
+            string json = JsonUtility.ToJson(data, true);
+            Debug.Log(json.ToString());
+            sb.AppendLine(json + "\n");
+
+        }
+
+        string path = Application.dataPath + "/Saves/PaintballDataFile.json";
+        File.WriteAllText(path, sb.ToString());
+
+    }
     public void SaveStars() {
 
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Star");
@@ -38,7 +69,7 @@ public class JsonWriteSystem : MonoBehaviour
             data.layer = obj.layer;
 
             string json = JsonUtility.ToJson(data, true);
-            Debug.Log(json.ToString());
+            
             sb.AppendLine(json + "\n");
 
         }
@@ -47,14 +78,22 @@ public class JsonWriteSystem : MonoBehaviour
         File.WriteAllText(path, sb.ToString());
     }
 
-    public void LoadStar()
+    public void Load()
     {
-        string path = Application.dataPath + "/Saves/StarsDataFile.json";
+       LoadStars();
+       LoadPaintballs();
+
+       
+
+    }
+
+    public void LoadStars() {
+        string starPath = Application.dataPath + "/Saves/StarsDataFile.json";
         List<StarData> starDataList = new List<StarData>();
 
-        if (File.Exists(path))
+        if (File.Exists(starPath))
         {
-            string jsonData = File.ReadAllText(path);
+            string jsonData = File.ReadAllText(starPath);
             string[] starDataJson = jsonData.Split('{');
 
             foreach (string json in starDataJson)
@@ -66,15 +105,8 @@ public class JsonWriteSystem : MonoBehaviour
                     string json_ = "{" + json;
                     Debug.Log(json_);
                     StarData data = JsonUtility.FromJson<StarData>(json_);
-                   
-                    
-                    StarData starObject = new StarData();
-                    starObject.xPosition = data.xPosition;
-                    starObject.yPosition = data.yPosition;
-                    starObject.zPosition = data.zPosition;
-                    starObject.layer = data.layer;
-                    starDataList.Add(starObject);
-                    
+                    starDataList.Add(data);
+
                 }
             }
         }
@@ -82,18 +114,52 @@ public class JsonWriteSystem : MonoBehaviour
         {
             Debug.LogError("Star data file not found!");
         }
+        star.MakeInstance(starDataList);
 
-       star.MakeInstance(starDataList);
+    }
+    public void LoadPaintballs() {
+
+        string paintballPath = Application.dataPath + "/Saves/PaintballDataFile.json";
+        List<PaintballData> paintballDataList = new List<PaintballData>();
+        if (File.Exists(paintballPath))
+        {
+
+            string jsonData = File.ReadAllText(paintballPath);
+            string[] paintballDataJson = jsonData.Split('{');
+
+            foreach (string json in paintballDataJson)
+            {
+                if (json != paintballDataJson[0])
+                {
+
+                    string json_ = "{" + json;
+                    Debug.Log(json_);
+                    try
+                    {
+                        PaintballData data = JsonUtility.FromJson<PaintballData>(json_);
+                        paintballDataList.Add(data);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogError($"Failed to deserialize JSON: {ex.Message}");
+                    }
+                    
+                    
+
+                }
+            }
+
+        }
+        else
+        {
+            Debug.LogError("Star data file not found!");
+        }
+
+        paintball.MakeInstance(paintballDataList);
 
     }
 
-    
 
-    public void SavePaintballs() {
-
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("PaintballGun");
-
-    }
     public void SaveLines() {
 
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Line");
