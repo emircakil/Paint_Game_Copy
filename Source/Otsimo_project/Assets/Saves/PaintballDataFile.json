@@ -1,16 +1,32 @@
 {
-    "colorWName": "black",
-    "xPosition": -8.60875129699707,
-    "yPosition": 6.8859710693359379,
+    "colorWName": "red",
+    "xPosition": -15.01801872253418,
+    "yPosition": 4.543629169464111,
     "zPosition": 0.0,
-    "layer": 0
+    "layer": 4
 }
 
 {
-    "colorWName": "black",
-    "xPosition": -7.193049907684326,
-    "yPosition": 5.058429718017578,
+    "colorWName": "green",
+    "xPosition": -14.631917953491211,
+    "yPosition": 5.187129974365234,
     "zPosition": 0.0,
-    "layer": 0
+    "layer": 5
+}
+
+{
+    "colorWName": "blue",
+    "xPosition": -14.091378211975098,
+    "yPosition": 6.551351070404053,
+    "zPosition": 0.0,
+    "layer": 6
+}
+
+{
+    "colorWName": "yellow",
+    "xPosition": -13.550836563110352,
+    "yPosition": 7.040410995483398,
+    "zPosition": 0.0,
+    "layer": 7
 }
 

@@ -40,15 +40,16 @@ public class JsonWriteSystem : MonoBehaviour
         PaintballData data = new PaintballData(); 
         var sb = new StringBuilder();
 
-        foreach (var obj in objects)
+        foreach (GameObject obj in objects)
         {
-            PaintballPrefab paintballPrefab = obj.GetComponent<PaintballPrefab>();
 
+            PaintballPrefab paintballPrefab = obj.GetComponent<PaintballPrefab>();
+            Renderer render = obj.GetComponent<Renderer>();
             data.colorWName = paintballPrefab.getSpriteName();
             data.xPosition = obj.transform.position.x;
             data.yPosition = obj.transform.position.y;
             data.zPosition = obj.transform.position.z;
-            data.layer = obj.layer;
+            data.layer = render.sortingOrder;
 
             string json = JsonUtility.ToJson(data, true);
          ;
@@ -68,11 +69,11 @@ public class JsonWriteSystem : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
-            
+            Renderer render = obj.GetComponent<Renderer>();
             data.xPosition = obj.transform.position.x;
             data.yPosition = obj.transform.position.y;
             data.zPosition = obj.transform.position.z;
-            data.layer = obj.layer;
+            data.layer = render.sortingOrder;
 
             string json = JsonUtility.ToJson(data, true);
             
@@ -93,13 +94,14 @@ public class JsonWriteSystem : MonoBehaviour
 
         foreach(GameObject obj in objects)
         {
+            Renderer render = obj.GetComponent<Renderer>();
             line = obj.GetComponent<Line>();
             data.color = line.getColorName();
             data.points = line.getPoints();
             data.xPosition = obj.transform.position.x;
             data.yPosition = obj.transform.position.y;
             data.zPosition= obj.transform.position.z;
-            data.layer = obj.layer;
+            data.layer = render.sortingOrder;
 
             string json = JsonUtility.ToJson(data, true);
             sb.AppendLine("@"+json+ '\n');
