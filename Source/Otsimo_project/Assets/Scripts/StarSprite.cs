@@ -37,6 +37,7 @@ public class StarSprite : MonoBehaviour
             Vector2 pos = new Vector3(data.xPosition, data.yPosition);
             GameObject paintInstance = Instantiate(paintPrefab, pos, Quaternion.identity);
             particle = paintInstance.GetComponentInChildren<ParticleSystem>();
+            paintInstance.GetComponent<Renderer>().sortingOrder = data.layer;
             particle.Stop();
           //  paintInstance.GetComponent<Renderer>().sortingOrder = layerManager.getLayer();
         //    paintInstance.GetComponentInChildren<ParticleSystem>.s

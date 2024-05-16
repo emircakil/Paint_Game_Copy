@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 322318716}
   - component: {fileID: 322318715}
   m_Layer: 0
-  m_Name: JsonTest
+  m_Name: SaveSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,6 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starDrawObject: {fileID: 1443013235}
   paintballDrawObject: {fileID: 943024943}
+  lineDrawObject: {fileID: 1740077245}
 --- !u!4 &322318716
 Transform:
   m_ObjectHideFlags: 0

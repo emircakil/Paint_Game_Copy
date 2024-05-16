@@ -6,6 +6,7 @@ using System.Text;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class JsonWriteSystem : MonoBehaviour
 {
@@ -13,11 +14,16 @@ public class JsonWriteSystem : MonoBehaviour
     StarSprite star;
     public GameObject paintballDrawObject;
     PaintballGun paintball;
+    public GameObject lineDrawObject;
+    Line line;
+    LineGenerator lineGenerator;
     
     private void Start()
     {
       star = starDrawObject.GetComponent<StarSprite>();
       paintball = paintballDrawObject.GetComponent<PaintballGun>();
+      line = lineDrawObject.GetComponentInChildren<Line>();
+      lineGenerator =  lineDrawObject.GetComponent<LineGenerator>();
     }
 
     public void SaveToJson() {
@@ -45,7 +51,7 @@ public class JsonWriteSystem : MonoBehaviour
             data.layer = obj.layer;
 
             string json = JsonUtility.ToJson(data, true);
-            Debug.Log(json.ToString());
+         ;
             sb.AppendLine(json + "\n");
 
         }
@@ -78,15 +84,71 @@ public class JsonWriteSystem : MonoBehaviour
         File.WriteAllText(path, sb.ToString());
     }
 
+    public void SaveLines()
+    {
+
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Line");
+        LineData data = new LineData();
+        var sb = new StringBuilder();
+
+        foreach(GameObject obj in objects)
+        {
+            line = obj.GetComponent<Line>();
+            data.color = line.getColorName();
+            data.points = line.getPoints();
+            data.xPosition = obj.transform.position.x;
+            data.yPosition = obj.transform.position.y;
+            data.zPosition= obj.transform.position.z;
+            data.layer = obj.layer;
+
+            string json = JsonUtility.ToJson(data, true);
+            sb.AppendLine("@"+json+ '\n');
+
+        }
+
+        string path = Application.dataPath + "/Saves/LineDataFile.json";
+        File.WriteAllText (path, sb.ToString());
+
+    }
     public void Load()
     {
        LoadStars();
        LoadPaintballs();
-
+        LoadLines();
        
 
     }
 
+    public void LoadLines() {
+
+        string linePath = Application.dataPath + "/Saves/LineDataFile.json";
+        List<LineData> lineDataList = new List<LineData>();
+
+        if (File.Exists(linePath))
+        {
+            string jsonData = File.ReadAllText(linePath);
+            string[] lineDataJson = jsonData.Split('@');
+
+         
+
+            foreach(string json in lineDataJson) {
+
+                if (json != lineDataJson[0]) {
+
+                    string json_ = "" + json;
+          
+                    LineData data = JsonUtility.FromJson<LineData>(json_);
+                    lineDataList.Add(data);
+                }
+            }
+        }
+        else {
+            Debug.LogError("Line data file not found!");
+        }
+        
+        lineGenerator.MakeInstance(lineDataList);
+        
+    }
     public void LoadStars() {
         string starPath = Application.dataPath + "/Saves/StarsDataFile.json";
         List<StarData> starDataList = new List<StarData>();
@@ -103,7 +165,7 @@ public class JsonWriteSystem : MonoBehaviour
 
 
                     string json_ = "{" + json;
-                    Debug.Log(json_);
+                  
                     StarData data = JsonUtility.FromJson<StarData>(json_);
                     starDataList.Add(data);
 
@@ -133,7 +195,7 @@ public class JsonWriteSystem : MonoBehaviour
                 {
 
                     string json_ = "{" + json;
-                    Debug.Log(json_);
+            
                     try
                     {
                         PaintballData data = JsonUtility.FromJson<PaintballData>(json_);
@@ -152,66 +214,11 @@ public class JsonWriteSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Star data file not found!");
+            Debug.LogError("Paintball data file not found!");
         }
 
         paintball.MakeInstance(paintballDataList);
 
     }
 
-
-    public void SaveLines() {
-
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Line");
-    }
-
-    /*
-    public void SaveToJson() {
-
-        GameObjectData data = new GameObjectData(1,1,1,1,1,1);
-     
-        string jsonString = JsonUtility.ToJson(line, true);
-        Debug.Log(jsonString);
-       // string path = Application.dataPath + "/Saves/GameObjectDataFile.json";
-        //File.WriteAllText(Application.dataPath + path, jsonString);
-    }
-
-    public void LoadFromJson() {
-
-        string path = Application.dataPath + "/Saves/GameObjectDataFile.json";
-        if (File.Exists(path))
-        {
-            string jsonString = File.ReadAllText(Application.dataPath + "/Saves/GameObjectDataFile.json");
-            GameObjectData data = JsonUtility.FromJson<GameObjectData>(jsonString);
-        }
-        else {
-
-            Debug.Log("Json file couldn't found");
-        }
-
-    }
-
-
-
-    SaveLoadObjects data = new SaveLoadObjects();
-     Debug.Log("Saving file as level" + levelInt + "...");
-     GameObject[] objects = GameObject.FindGameObjectsWithTag("Object");
-     var sb = new StringBuilder();
-
-     foreach (GameObject obj in objects)
-     {
-         data.objName = obj.name;
-         data.posX = obj.transform.position.x;
-         data.posY = obj.transform.position.y;
-         data.posZ = obj.transform.position.z;
-         string json = JsonUtility.ToJson(data, true);
-         Debug.Log(json.ToString());
-         sb.AppendLine(json);
-     }
-
-File.WriteAllText("level" + levelInt + ".phbl", sb.ToString());
-
-
-
-    */
 }

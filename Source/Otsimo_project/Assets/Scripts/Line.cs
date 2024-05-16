@@ -7,8 +7,8 @@ public class Line : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     List<Vector2> points;
-
     EdgeCollider2D edgeCollider;
+    string colorName;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class Line : MonoBehaviour
         if (Vector2.Distance(points.Last(), position) > .1f)
         {
             SetPoint(position);
-            SetEdgeCollider(lineRenderer);
+            SetEdgeCollider(lineRenderer ,edgeCollider);
         }
     }
     void SetPoint(Vector2 point)
@@ -48,14 +48,56 @@ public class Line : MonoBehaviour
         lineRenderer.SetPosition(points.Count - 1, point);
     }
 
-    void SetEdgeCollider(LineRenderer edgeLineRenderer) { 
+    void SetEdgeCollider(LineRenderer edgeLineRenderer, EdgeCollider2D edgeCollider2D) { 
         List<Vector2> edges = new List<Vector2>();
 
         for (int point = 0;  point < edgeLineRenderer.positionCount; point++) { 
         
-            Vector3 lineRendererPoint = edgeLineRenderer.GetPosition(point);
+            Vector2 lineRendererPoint = edgeLineRenderer.GetPosition(point);
             edges.Add(new Vector2(lineRendererPoint.x, lineRendererPoint.y));
         }
-        edgeCollider.SetPoints(edges);
+        edgeCollider2D.SetPoints(edges);
+    }
+
+    public void UpdateLine_(Vector2 position,LineRenderer renderer, EdgeCollider2D edgeCollider2D)
+    {
+
+        if (points == null)
+        {
+
+            points = new List<Vector2>();
+            SetPoint(position);
+
+            return;
+        }
+
+        if (Vector2.Distance(points.Last(), position) > .1f)
+        {
+            SetPoint(position);
+            SetEdgeCollider(renderer,edgeCollider2D);
+        }
+    }
+    public void UpdateLineInstance(List<Vector2> pointsNew, LineRenderer renderer, EdgeCollider2D edgeCollider2D) 
+    {   
+        foreach (Vector2 point in pointsNew)
+        {
+
+            UpdateLine_(point, renderer, edgeCollider2D);
+        }
+    }
+
+    public void setColorName(string colorName) { 
+    
+        this.colorName = colorName;
+    }
+
+    public string getColorName() { 
+    
+        return colorName;
+    }
+
+    public List<Vector2> getPoints() { 
+    
+        return points;
     }
 }

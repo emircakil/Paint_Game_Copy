@@ -62,6 +62,7 @@ public class PaintballGun : MonoBehaviour
             paintballPrefab = paintInstance.GetComponent<PaintballPrefab>();
             spriteRenderer = paintInstance.GetComponent <SpriteRenderer>();
             spriteRenderer.sprite = paintballPrefab.getSprite(data.colorWName);
+            spriteRenderer.sortingOrder = data.layer;
             particle = paintInstance.GetComponentInChildren<ParticleSystem>();
             particle.Stop();
 
