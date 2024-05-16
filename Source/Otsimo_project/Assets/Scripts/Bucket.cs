@@ -30,6 +30,10 @@ public class Bucket : MonoBehaviour
         }
 
     }
+    public Color getColor() {
+
+        return color_;
+    }
 
     
 }

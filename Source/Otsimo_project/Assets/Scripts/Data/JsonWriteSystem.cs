@@ -17,6 +17,10 @@ public class JsonWriteSystem : MonoBehaviour
     public GameObject lineDrawObject;
     Line line;
     LineGenerator lineGenerator;
+    public GameObject bucketDrawObject;
+    Bucket bucket;
+    public Camera mainCamera;
+
     
     private void Start()
     {
@@ -24,14 +28,24 @@ public class JsonWriteSystem : MonoBehaviour
       paintball = paintballDrawObject.GetComponent<PaintballGun>();
       line = lineDrawObject.GetComponentInChildren<Line>();
       lineGenerator =  lineDrawObject.GetComponent<LineGenerator>();
+        bucket = bucketDrawObject.GetComponentInChildren<Bucket>();
     }
 
     public void SaveToJson() {
-
+        SaveBucket();
         SaveStars();
         SaveLines();
         SavePaintballs();
+        
+    }
 
+    public void SaveBucket() {
+
+        BucketData data = new BucketData(); 
+        data.color = bucket.getColor();
+        string json = JsonUtility.ToJson(data);
+        string path = Application.dataPath + "/Saves/BucketDataFile.json";
+        File.WriteAllText(path, json);
     }
     public void SavePaintballs()
     {
@@ -52,7 +66,6 @@ public class JsonWriteSystem : MonoBehaviour
             data.layer = render.sortingOrder;
 
             string json = JsonUtility.ToJson(data, true);
-         ;
             sb.AppendLine(json + "\n");
 
         }
@@ -114,13 +127,22 @@ public class JsonWriteSystem : MonoBehaviour
     }
     public void Load()
     {
+       LoadBucket();
        LoadStars();
        LoadPaintballs();
-        LoadLines();
+       LoadLines();
        
 
     }
 
+    public void LoadBucket() {
+
+        string bucketPath = Application.dataPath + "/Saves/BucketDataFile.json";
+        string jsonData = File.ReadAllText (bucketPath);
+        BucketData data = new BucketData();
+        data = JsonUtility.FromJson<BucketData>(jsonData);
+        mainCamera.backgroundColor = data.color;
+    }
     public void LoadLines() {
 
         string linePath = Application.dataPath + "/Saves/LineDataFile.json";

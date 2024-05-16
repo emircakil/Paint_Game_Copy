@@ -1,32 +1,72 @@
 {
-    "colorWName": "red",
-    "xPosition": -15.01801872253418,
-    "yPosition": 4.543629169464111,
+    "colorWName": "yellow",
+    "xPosition": -11.157014846801758,
+    "yPosition": 6.7057905197143559,
     "zPosition": 0.0,
     "layer": 4
 }
 
 {
-    "colorWName": "green",
-    "xPosition": -14.631917953491211,
-    "yPosition": 5.187129974365234,
+    "colorWName": "blue",
+    "xPosition": -7.939510822296143,
+    "yPosition": 3.3595876693725588,
     "zPosition": 0.0,
     "layer": 5
 }
 
 {
     "colorWName": "blue",
-    "xPosition": -14.091378211975098,
-    "yPosition": 6.551351070404053,
+    "xPosition": -8.145431518554688,
+    "yPosition": 5.032689571380615,
     "zPosition": 0.0,
     "layer": 6
 }
 
 {
-    "colorWName": "yellow",
-    "xPosition": -13.550836563110352,
-    "yPosition": 7.040410995483398,
+    "colorWName": "blue",
+    "xPosition": -11.028314590454102,
+    "yPosition": 7.5809526443481449,
     "zPosition": 0.0,
     "layer": 7
+}
+
+{
+    "colorWName": "red",
+    "xPosition": -13.808237075805664,
+    "yPosition": 2.819047212600708,
+    "zPosition": 0.0,
+    "layer": 8
+}
+
+{
+    "colorWName": "red",
+    "xPosition": -14.142858505249024,
+    "yPosition": 5.496009826660156,
+    "zPosition": 0.0,
+    "layer": 9
+}
+
+{
+    "colorWName": "red",
+    "xPosition": -15.09523868560791,
+    "yPosition": 7.1691107749938969,
+    "zPosition": 0.0,
+    "layer": 10
+}
+
+{
+    "colorWName": "red",
+    "xPosition": -11.208495140075684,
+    "yPosition": 5.418789386749268,
+    "zPosition": 0.0,
+    "layer": 11
+}
+
+{
+    "colorWName": "red",
+    "xPosition": -11.697555541992188,
+    "yPosition": 2.793307304382324,
+    "zPosition": 0.0,
+    "layer": 12
 }
 

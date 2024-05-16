@@ -1,21 +1,42 @@
 {
-    "xPosition": -14.992279052734375,
-    "yPosition": 4.0288286209106449,
+    "xPosition": -12.109395980834961,
+    "yPosition": 4.440669059753418,
     "zPosition": 0.0,
-    "layer": 8
+    "layer": 13
 }
 
 {
-    "xPosition": -14.889318466186524,
-    "yPosition": 5.264349937438965,
+    "xPosition": -10.10167407989502,
+    "yPosition": 3.308107614517212,
     "zPosition": 0.0,
-    "layer": 9
+    "layer": 14
 }
 
 {
-    "xPosition": -14.297298431396485,
-    "yPosition": 6.216731071472168,
+    "xPosition": -14.915059089660645,
+    "yPosition": 4.260488510131836,
     "zPosition": 0.0,
-    "layer": 10
+    "layer": 15
+}
+
+{
+    "xPosition": -12.13513469696045,
+    "yPosition": 6.731531620025635,
+    "zPosition": 0.0,
+    "layer": 16
+}
+
+{
+    "xPosition": -9.535392761230469,
+    "yPosition": 4.8267693519592289,
+    "zPosition": 0.0,
+    "layer": 17
+}
+
+{
+    "xPosition": -11.800514221191407,
+    "yPosition": 3.436807632446289,
+    "zPosition": 0.0,
+    "layer": 18
 }
 
