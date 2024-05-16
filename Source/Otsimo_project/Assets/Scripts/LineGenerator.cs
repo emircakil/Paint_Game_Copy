@@ -15,6 +15,7 @@ public class LineGenerator : MonoBehaviour
     LayerManager layerManager;
 
 
+
     private void Awake()
     {
         colorController = FindObjectOfType<ColorController>();

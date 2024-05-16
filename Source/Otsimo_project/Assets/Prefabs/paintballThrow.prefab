@@ -1110,18 +1110,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2830181454812470942}
     m_Modifications:
     - target: {fileID: 386740697144033664, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 386740697144033664, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 386740697144033664, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 386740697144033664, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.36066183
       objectReference: {fileID: 0}
@@ -1165,47 +1153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaintballParticle
       objectReference: {fileID: 0}
-    - target: {fileID: 7379222676974806820, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379222676974806820, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379222676974806820, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379222676974806820, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6989285927818730222, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 822561879046111090}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
---- !u!1 &773261117538513743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6989285927818730222, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
-  m_PrefabInstance: {fileID: 7657740488862378401}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &822561879046111090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773261117538513743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6648ba86947a449b57e78796b0b8cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8005210990582016033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 386740697144033664, guid: b58e894953aa7a64fbad996f727a1640, type: 3}
