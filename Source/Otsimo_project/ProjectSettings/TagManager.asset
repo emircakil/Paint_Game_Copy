@@ -9,6 +9,7 @@ TagManager:
   - Bucket
   - PaintballGun
   - UI
+  - SceneManager
   layers:
   - Default
   - TransparentFX

@@ -1,72 +1,24 @@
 {
     "colorWName": "yellow",
-    "xPosition": -11.157014846801758,
-    "yPosition": 6.7057905197143559,
+    "xPosition": -13.216217041015625,
+    "yPosition": 4.286228656768799,
+    "zPosition": 0.0,
+    "layer": 3
+}
+
+{
+    "colorWName": "yellow",
+    "xPosition": -7.141570568084717,
+    "yPosition": 4.234748363494873,
     "zPosition": 0.0,
     "layer": 4
 }
 
 {
-    "colorWName": "blue",
-    "xPosition": -7.939510822296143,
-    "yPosition": 3.3595876693725588,
+    "colorWName": "yellow",
+    "xPosition": -9.277990341186524,
+    "yPosition": 1.6350059509277344,
     "zPosition": 0.0,
     "layer": 5
-}
-
-{
-    "colorWName": "blue",
-    "xPosition": -8.145431518554688,
-    "yPosition": 5.032689571380615,
-    "zPosition": 0.0,
-    "layer": 6
-}
-
-{
-    "colorWName": "blue",
-    "xPosition": -11.028314590454102,
-    "yPosition": 7.5809526443481449,
-    "zPosition": 0.0,
-    "layer": 7
-}
-
-{
-    "colorWName": "red",
-    "xPosition": -13.808237075805664,
-    "yPosition": 2.819047212600708,
-    "zPosition": 0.0,
-    "layer": 8
-}
-
-{
-    "colorWName": "red",
-    "xPosition": -14.142858505249024,
-    "yPosition": 5.496009826660156,
-    "zPosition": 0.0,
-    "layer": 9
-}
-
-{
-    "colorWName": "red",
-    "xPosition": -15.09523868560791,
-    "yPosition": 7.1691107749938969,
-    "zPosition": 0.0,
-    "layer": 10
-}
-
-{
-    "colorWName": "red",
-    "xPosition": -11.208495140075684,
-    "yPosition": 5.418789386749268,
-    "zPosition": 0.0,
-    "layer": 11
-}
-
-{
-    "colorWName": "red",
-    "xPosition": -11.697555541992188,
-    "yPosition": 2.793307304382324,
-    "zPosition": 0.0,
-    "layer": 12
 }
 

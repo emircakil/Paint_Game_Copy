@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,15 +19,23 @@ public class JsonWriteSystem : MonoBehaviour
     public GameObject bucketDrawObject;
     Bucket bucket;
     public Camera mainCamera;
+    GameObject sceneManagerObject;
+    SceneChange sceneChange;
+    bool isLoaded;
 
-    
     private void Start()
     {
-      star = starDrawObject.GetComponent<StarSprite>();
-      paintball = paintballDrawObject.GetComponent<PaintballGun>();
-      line = lineDrawObject.GetComponentInChildren<Line>();
-      lineGenerator =  lineDrawObject.GetComponent<LineGenerator>();
+        sceneManagerObject = GameObject.FindGameObjectWithTag("SceneManager");
+        sceneChange = sceneManagerObject.GetComponent<SceneChange>();
+        isLoaded = sceneChange.getIsLoaded();
+        star = starDrawObject.GetComponent<StarSprite>();
+        paintball = paintballDrawObject.GetComponent<PaintballGun>();
+        line = lineDrawObject.GetComponentInChildren<Line>();
+        lineGenerator = lineDrawObject.GetComponent<LineGenerator>();
         bucket = bucketDrawObject.GetComponentInChildren<Bucket>();
+        Debug.Log(isLoaded);
+        Load();
+    
     }
 
     public void SaveToJson() {
@@ -127,14 +134,22 @@ public class JsonWriteSystem : MonoBehaviour
     }
     public void Load()
     {
-       LoadBucket();
-       LoadStars();
-       LoadPaintballs();
-       LoadLines();
-       
+        if (isLoaded)
+        {
+            LoadBucket();
+            LoadStars();
+            LoadPaintballs();
+            LoadLines();
+        }
+
+        starDrawObject.SetActive(false);
+        paintballDrawObject.SetActive(false);
+        bucketDrawObject.SetActive(false);
 
     }
 
+
+ 
     public void LoadBucket() {
 
         string bucketPath = Application.dataPath + "/Saves/BucketDataFile.json";
@@ -245,4 +260,9 @@ public class JsonWriteSystem : MonoBehaviour
 
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveToJson();
+        
+    }
 }

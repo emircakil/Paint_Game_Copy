@@ -10,7 +10,7 @@ public class Bucket : MonoBehaviour
 {
     
     [SerializeField]Camera cam;
-    Color color_;
+    Color color_ = Color.white;
     ColorController colorController;
 
     private void Awake()
