@@ -33,7 +33,9 @@ public class LineGenerator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+
+            Touch touch = Input.touches[0];
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
                 GameObject newLine = Instantiate(linePrefab);
                 color_ = colorController.getColor();
@@ -43,6 +45,7 @@ public class LineGenerator : MonoBehaviour
                 activeLine = newLine.GetComponent<Line>();
                 activeLine.setColorName(colorController.getColorWName());
             }
+            
         }
 
         if (Input.GetMouseButtonUp(0))

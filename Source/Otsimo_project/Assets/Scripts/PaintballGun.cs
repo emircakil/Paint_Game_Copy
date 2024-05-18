@@ -30,11 +30,10 @@ public class PaintballGun : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            if (!EventSystem.current.IsPointerOverGameObject())
+
+            Touch touch = Input.touches[0];
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
-
-
-
                 colorController = colorGameObject.GetComponent<ColorController>();
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject paintInstance = Instantiate(paintPrefab, mousePosition, Quaternion.identity);
@@ -45,8 +44,8 @@ public class PaintballGun : MonoBehaviour
                 particalSystem = paintInstance.GetComponentInChildren<ParticleSystem>();
                 particalSystem.startColor = colorController.getColor();
                 paintballSound.Play();
-
             }
+
             
            
         }

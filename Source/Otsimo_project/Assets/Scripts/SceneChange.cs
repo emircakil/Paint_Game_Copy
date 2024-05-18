@@ -23,4 +23,6 @@ public class SceneChange : MonoBehaviour
     public bool getIsLoaded() { 
         return isLoaded;
     }
+
+
 }

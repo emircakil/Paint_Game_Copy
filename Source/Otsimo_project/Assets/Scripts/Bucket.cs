@@ -12,17 +12,20 @@ public class Bucket : MonoBehaviour
     [SerializeField]Camera cam;
     Color color_ = Color.white;
     ColorController colorController;
+    string colorWString;
 
     private void Awake()
     {
         colorController = FindObjectOfType<ColorController>();
+ 
     }
     private void Update()
     {
      
         if (Input.GetMouseButtonDown(0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            Touch touch = Input.touches[0];
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
                 color_ = colorController.getColor();
                 cam.backgroundColor = color_;
@@ -32,8 +35,12 @@ public class Bucket : MonoBehaviour
     }
     public Color getColor() {
 
-        return color_;
+    Color color = cam.backgroundColor;
+            
+    return color;
+
     }
+
 
     
 }

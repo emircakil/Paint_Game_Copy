@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Color = UnityEngine.Color;
 
 public class JsonWriteSystem : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class JsonWriteSystem : MonoBehaviour
     SceneChange sceneChange;
     bool isLoaded;
 
-    private void Start()
+    private void Awake()
     {
         sceneManagerObject = GameObject.FindGameObjectWithTag("SceneManager");
         sceneChange = sceneManagerObject.GetComponent<SceneChange>();
@@ -34,6 +36,7 @@ public class JsonWriteSystem : MonoBehaviour
         lineGenerator = lineDrawObject.GetComponent<LineGenerator>();
         bucket = bucketDrawObject.GetComponentInChildren<Bucket>();
         Debug.Log(isLoaded);
+
         Load();
     
     }
@@ -134,6 +137,7 @@ public class JsonWriteSystem : MonoBehaviour
     }
     public void Load()
     {
+        isLoaded = sceneChange.getIsLoaded();
         if (isLoaded)
         {
             LoadBucket();
@@ -153,10 +157,15 @@ public class JsonWriteSystem : MonoBehaviour
     public void LoadBucket() {
 
         string bucketPath = Application.dataPath + "/Saves/BucketDataFile.json";
-        string jsonData = File.ReadAllText (bucketPath);
-        BucketData data = new BucketData();
-        data = JsonUtility.FromJson<BucketData>(jsonData);
-        mainCamera.backgroundColor = data.color;
+
+        if (File.Exists(bucketPath))
+        {
+
+            string jsonData = File.ReadAllText(bucketPath);
+            BucketData data = new BucketData();
+            data = JsonUtility.FromJson<BucketData>(jsonData);
+            mainCamera.backgroundColor = data.color;
+        }
     }
     public void LoadLines() {
 
@@ -244,8 +253,6 @@ public class JsonWriteSystem : MonoBehaviour
                     {
                         Debug.LogError($"Failed to deserialize JSON: {ex.Message}");
                     }
-                    
-                    
 
                 }
             }

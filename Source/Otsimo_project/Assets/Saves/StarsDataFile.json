@@ -1,7 +1,147 @@
 {
-    "xPosition": -16.94852066040039,
-    "yPosition": 5.212869644165039,
+    "xPosition": -17.962963104248048,
+    "yPosition": 5.342450141906738,
     "zPosition": 0.0,
-    "layer": 2
+    "layer": 3
+}
+
+{
+    "xPosition": -13.746438026428223,
+    "yPosition": 4.573218822479248,
+    "zPosition": 0.0,
+    "layer": 4
+}
+
+{
+    "xPosition": -12.037035942077637,
+    "yPosition": 3.4336180686950685,
+    "zPosition": 0.0,
+    "layer": 5
+}
+
+{
+    "xPosition": -14.857549667358399,
+    "yPosition": 2.2085464000701906,
+    "zPosition": 0.0,
+    "layer": 6
+}
+
+{
+    "xPosition": -18.703702926635743,
+    "yPosition": 3.376638412475586,
+    "zPosition": 0.0,
+    "layer": 7
+}
+
+{
+    "xPosition": -17.535612106323243,
+    "yPosition": 6.311110973358154,
+    "zPosition": 0.0,
+    "layer": 8
+}
+
+{
+    "xPosition": -13.205127716064454,
+    "yPosition": 3.2626781463623049,
+    "zPosition": 0.0,
+    "layer": 12
+}
+
+{
+    "xPosition": -14.05982780456543,
+    "yPosition": 2.9207968711853029,
+    "zPosition": 0.0,
+    "layer": 13
+}
+
+{
+    "xPosition": -11.353276252746582,
+    "yPosition": 3.006267786026001,
+    "zPosition": 0.0,
+    "layer": 14
+}
+
+{
+    "xPosition": -12.549857139587403,
+    "yPosition": 6.6245012283325199,
+    "zPosition": 0.0,
+    "layer": 15
+}
+
+{
+    "xPosition": -14.829058647155762,
+    "yPosition": 7.621652603149414,
+    "zPosition": 0.0,
+    "layer": 16
+}
+
+{
+    "xPosition": -13.831908226013184,
+    "yPosition": 4.573218822479248,
+    "zPosition": 0.0,
+    "layer": 18
+}
+
+{
+    "xPosition": -11.125356674194336,
+    "yPosition": 3.9464383125305177,
+    "zPosition": 0.0,
+    "layer": 19
+}
+
+{
+    "xPosition": -9.957263946533204,
+    "yPosition": 5.143019676208496,
+    "zPosition": 0.0,
+    "layer": 20
+}
+
+{
+    "xPosition": -11.153844833374024,
+    "yPosition": 6.738461494445801,
+    "zPosition": 0.0,
+    "layer": 21
+}
+
+{
+    "xPosition": -12.492876052856446,
+    "yPosition": 6.937891960144043,
+    "zPosition": 0.0,
+    "layer": 22
+}
+
+{
+    "xPosition": -13.176637649536133,
+    "yPosition": 6.197151184082031,
+    "zPosition": 0.0,
+    "layer": 23
+}
+
+{
+    "xPosition": -14.14529800415039,
+    "yPosition": 4.915099620819092,
+    "zPosition": 0.0,
+    "layer": 24
+}
+
+{
+    "xPosition": -15.341878890991211,
+    "yPosition": 4.402279376983643,
+    "zPosition": 0.0,
+    "layer": 25
+}
+
+{
+    "xPosition": -16.880342483520509,
+    "yPosition": 4.003418922424316,
+    "zPosition": 0.0,
+    "layer": 26
+}
+
+{
+    "xPosition": -18.532764434814454,
+    "yPosition": 3.5190882682800295,
+    "zPosition": 0.0,
+    "layer": 27
 }
 

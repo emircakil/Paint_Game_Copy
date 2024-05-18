@@ -20,13 +20,16 @@ public class StarSprite : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            Touch touch = Input.touches[0];
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject paintInstance = Instantiate(paintPrefab, mousePosition, Quaternion.identity);
                 paintInstance.GetComponent<Renderer>().sortingOrder = layerManager.getLayer();
                 starSound.Play();
             }
+            
+            
         }
     }
 
