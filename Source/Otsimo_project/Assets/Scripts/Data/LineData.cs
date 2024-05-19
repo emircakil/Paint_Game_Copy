@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LineData 
 {
-    public string color;
+    public Color color;
     public List<Vector2> points;
     public float xPosition;
     public float yPosition;

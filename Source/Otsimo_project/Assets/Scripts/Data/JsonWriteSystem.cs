@@ -25,7 +25,7 @@ public class JsonWriteSystem : MonoBehaviour
     SceneChange sceneChange;
     bool isLoaded;
 
-    private void Awake()
+    private void Start()
     {
         sceneManagerObject = GameObject.FindGameObjectWithTag("SceneManager");
         sceneChange = sceneManagerObject.GetComponent<SceneChange>();
@@ -42,6 +42,13 @@ public class JsonWriteSystem : MonoBehaviour
     }
 
     public void SaveToJson() {
+
+        string savesDirectory = Application.persistentDataPath + "/Saves";
+        if (!Directory.Exists(savesDirectory))
+        {
+            Directory.CreateDirectory(savesDirectory);
+        }
+
         SaveBucket();
         SaveStars();
         SaveLines();
@@ -54,7 +61,7 @@ public class JsonWriteSystem : MonoBehaviour
         BucketData data = new BucketData(); 
         data.color = bucket.getColor();
         string json = JsonUtility.ToJson(data);
-        string path = Application.dataPath + "/Saves/BucketDataFile.json";
+        string path = Application.persistentDataPath + "/Saves/BucketDataFile.json";
         File.WriteAllText(path, json);
     }
     public void SavePaintballs()
@@ -80,7 +87,7 @@ public class JsonWriteSystem : MonoBehaviour
 
         }
 
-        string path = Application.dataPath + "/Saves/PaintballDataFile.json";
+        string path = Application.persistentDataPath + "/Saves/PaintballDataFile.json";
         File.WriteAllText(path, sb.ToString());
 
     }
@@ -104,7 +111,7 @@ public class JsonWriteSystem : MonoBehaviour
 
         }
 
-        string path = Application.dataPath + "/Saves/StarsDataFile.json";
+        string path = Application.persistentDataPath + "/Saves/StarsDataFile.json";
         File.WriteAllText(path, sb.ToString());
     }
 
@@ -119,7 +126,7 @@ public class JsonWriteSystem : MonoBehaviour
         {
             Renderer render = obj.GetComponent<Renderer>();
             line = obj.GetComponent<Line>();
-            data.color = line.getColorName();
+            data.color = render.material.color;
             data.points = line.getPoints();
             data.xPosition = obj.transform.position.x;
             data.yPosition = obj.transform.position.y;
@@ -131,7 +138,7 @@ public class JsonWriteSystem : MonoBehaviour
 
         }
 
-        string path = Application.dataPath + "/Saves/LineDataFile.json";
+        string path = Application.persistentDataPath + "/Saves/LineDataFile.json";
         File.WriteAllText (path, sb.ToString());
 
     }
@@ -144,8 +151,9 @@ public class JsonWriteSystem : MonoBehaviour
             LoadStars();
             LoadPaintballs();
             LoadLines();
+           
         }
-
+       
         starDrawObject.SetActive(false);
         paintballDrawObject.SetActive(false);
         bucketDrawObject.SetActive(false);
@@ -156,7 +164,7 @@ public class JsonWriteSystem : MonoBehaviour
  
     public void LoadBucket() {
 
-        string bucketPath = Application.dataPath + "/Saves/BucketDataFile.json";
+        string bucketPath = Application.persistentDataPath + "/Saves/BucketDataFile.json";
 
         if (File.Exists(bucketPath))
         {
@@ -169,7 +177,7 @@ public class JsonWriteSystem : MonoBehaviour
     }
     public void LoadLines() {
 
-        string linePath = Application.dataPath + "/Saves/LineDataFile.json";
+        string linePath = Application.persistentDataPath + "/Saves/LineDataFile.json";
         List<LineData> lineDataList = new List<LineData>();
 
         if (File.Exists(linePath))
@@ -198,7 +206,7 @@ public class JsonWriteSystem : MonoBehaviour
         
     }
     public void LoadStars() {
-        string starPath = Application.dataPath + "/Saves/StarsDataFile.json";
+        string starPath = Application.persistentDataPath + "/Saves/StarsDataFile.json";
         List<StarData> starDataList = new List<StarData>();
 
         if (File.Exists(starPath))
@@ -229,7 +237,7 @@ public class JsonWriteSystem : MonoBehaviour
     }
     public void LoadPaintballs() {
 
-        string paintballPath = Application.dataPath + "/Saves/PaintballDataFile.json";
+        string paintballPath = Application.persistentDataPath + "/Saves/PaintballDataFile.json";
         List<PaintballData> paintballDataList = new List<PaintballData>();
         if (File.Exists(paintballPath))
         {
@@ -267,9 +275,12 @@ public class JsonWriteSystem : MonoBehaviour
 
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationPause(bool pause)
     {
-        SaveToJson();
-        
+        if (pause)
+        {
+
+            SaveToJson();
+        }
     }
 }

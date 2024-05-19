@@ -8,7 +8,6 @@ public class Line : MonoBehaviour
     public LineRenderer lineRenderer;
     List<Vector2> points;
     EdgeCollider2D edgeCollider;
-    string colorName;
 
     private void Start()
     {
@@ -85,17 +84,6 @@ public class Line : MonoBehaviour
             UpdateLine_(point, renderer, edgeCollider2D);
         }
     }
-
-    public void setColorName(string colorName) { 
-    
-        this.colorName = colorName;
-    }
-
-    public string getColorName() { 
-    
-        return colorName;
-    }
-
     public List<Vector2> getPoints() { 
     
         return points;

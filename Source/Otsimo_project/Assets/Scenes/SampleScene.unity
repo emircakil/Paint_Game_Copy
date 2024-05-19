@@ -3358,6 +3358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveObject: {fileID: 322318714}
+  starDrawObject: {fileID: 1443013235}
+  paintballDrawObject: {fileID: 943024943}
+  lineDrawObject: {fileID: 1740077245}
+  bucketDrawObject: {fileID: 1073240440}
 --- !u!114 &1540618400
 MonoBehaviour:
   m_ObjectHideFlags: 0

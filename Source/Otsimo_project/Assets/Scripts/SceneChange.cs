@@ -11,18 +11,20 @@ public class SceneChange : MonoBehaviour
     }
 
     public void ContinueOnCurrentGame() {
-        isLoaded = true;
+        setIsLoaded(true);
         SceneManager.LoadScene("SampleScene");
+        
     }
 
     public void NewGame() {
-        isLoaded = false;
+        setIsLoaded(false);
         SceneManager.LoadScene("SampleScene");
     }
-
-    public bool getIsLoaded() { 
+    private void setIsLoaded(bool value) { 
+        isLoaded=value;
+    }
+    public bool getIsLoaded() {
         return isLoaded;
     }
-
 
 }

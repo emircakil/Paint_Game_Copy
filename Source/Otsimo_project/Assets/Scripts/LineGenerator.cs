@@ -24,6 +24,10 @@ public class LineGenerator : MonoBehaviour
         colorController = FindObjectOfType<ColorController>();
         layerManager = layerObject.gameObject.GetComponent<LayerManager>();
     }
+    private void Start()
+    {
+        activeLine = null;
+    }
 
     private void OnEnable()
     {
@@ -31,10 +35,11 @@ public class LineGenerator : MonoBehaviour
     }
     void Update()
     {
+        Touch touch;
         if (Input.GetMouseButtonDown(0))
         {
 
-            Touch touch = Input.touches[0];
+            touch = Input.touches[0];
             if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
                 GameObject newLine = Instantiate(linePrefab);
@@ -43,7 +48,6 @@ public class LineGenerator : MonoBehaviour
                 lineRenderer.material.color = color_;
                 lineRenderer.sortingOrder = layerManager.getLayer();
                 activeLine = newLine.GetComponent<Line>();
-                activeLine.setColorName(colorController.getColorWName());
             }
             
         }
@@ -55,9 +59,12 @@ public class LineGenerator : MonoBehaviour
 
         if (activeLine != null)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            activeLine.UpdateLine(mousePos);
-
+            touch = Input.touches[0];
+            if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                activeLine.UpdateLine(mousePos);
+            }
         }
     }
 
@@ -71,60 +78,13 @@ public class LineGenerator : MonoBehaviour
             activeLine = newPre.GetComponent<Line>();
             LineRenderer lineRenderer = newPre.GetComponent<LineRenderer>();
             EdgeCollider2D edgeCollider = newPre.GetComponent<EdgeCollider2D>();
-
-            string colorName = data.color;
-            Debug.Log(colorName);
-            Color newColor;
-            switch (colorName)
-            {
-                case "black":
-                    newColor = Color.black;
-                    break;
-                case "white":
-                    newColor = Color.white;
-                    break;
-                case "blue":
-                    newColor = Color.blue;
-                    break;
-                case "green":
-                    newColor = Color.green;
-                    break;
-                case "orange":
-                    newColor = new Color(1.0f, 0.5f, 0.0f);
-                    break;
-                case "purple":
-                    newColor = new Color(0.5f, 0.0f, 0.5f);
-                    break;
-                case "red":
-                    newColor = Color.red;
-                    break;
-                case "yellow":
-                    newColor = Color.yellow;
-                    break;
-                default:
-                    newColor = Color.black;
-                    break;
-            }
+           
             lineRenderer.sortingOrder = data.layer;
-            lineRenderer.material.color = newColor;
+            lineRenderer.material.color = data.color;
             activeLine.UpdateLineInstance(data.points, lineRenderer, edgeCollider );
          
-          
-
 
         }
-
-        /*
-       foreach (LineData line in list)
-       {
-
-           foreach (var point in line.points) {
-
-               Debug.Log(point);
-           }
-       }
-
-       */
        
     }
 }
