@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DestroyParticles : MonoBehaviour
 {
-
+    // This class created for particle effetcs. They are destroying after use.
     private void Start()
     {
         StartCoroutine(DestroyObject());

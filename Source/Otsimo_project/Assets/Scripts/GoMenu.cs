@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GoMenu : MonoBehaviour
 {
+    // This class created for go back menu.
+
     public GameObject saveObject;
     JsonWriteSystem saveSystem;
     GameObject sceneManagerObject;

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LayerManager : MonoBehaviour
 {
+    // This class adjust sorting numbers for creating new objects.
+
     private int layerCount = 0;
     GameObject sceneManagerObject;
     SceneChange sceneChange;
@@ -28,6 +30,7 @@ public class LayerManager : MonoBehaviour
 
                 if (gO.GetComponent<Renderer>() != null)
                 {
+                    // Renderer gets sorting number of game objects.
                     Renderer renderer = gO.GetComponent<Renderer>();
                     int layer = renderer.sortingOrder;
                     if (biggest < layer && layer < 9000)

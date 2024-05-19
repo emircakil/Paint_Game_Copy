@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PenController : MonoBehaviour
 {
+    // Controller for tools.
+
     public GameObject eraser;
     public GameObject pen;
     public GameObject bucket;

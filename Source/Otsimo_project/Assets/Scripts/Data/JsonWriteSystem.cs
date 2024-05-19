@@ -38,7 +38,6 @@ public class JsonWriteSystem : MonoBehaviour
         Debug.Log(isLoaded);
 
         Load();
-    
     }
 
     public void SaveToJson() {
@@ -48,12 +47,10 @@ public class JsonWriteSystem : MonoBehaviour
         {
             Directory.CreateDirectory(savesDirectory);
         }
-
         SaveBucket();
         SaveStars();
         SaveLines();
         SavePaintballs();
-        
     }
 
     public void SaveBucket() {
@@ -73,7 +70,6 @@ public class JsonWriteSystem : MonoBehaviour
 
         foreach (GameObject obj in objects)
         {
-
             PaintballPrefab paintballPrefab = obj.GetComponent<PaintballPrefab>();
             Renderer render = obj.GetComponent<Renderer>();
             data.colorWName = paintballPrefab.getSpriteName();
@@ -84,9 +80,7 @@ public class JsonWriteSystem : MonoBehaviour
 
             string json = JsonUtility.ToJson(data, true);
             sb.AppendLine(json + "\n");
-
         }
-
         string path = Application.persistentDataPath + "/Saves/PaintballDataFile.json";
         File.WriteAllText(path, sb.ToString());
 
@@ -106,9 +100,7 @@ public class JsonWriteSystem : MonoBehaviour
             data.layer = render.sortingOrder;
 
             string json = JsonUtility.ToJson(data, true);
-            
             sb.AppendLine(json + "\n");
-
         }
 
         string path = Application.persistentDataPath + "/Saves/StarsDataFile.json";
@@ -135,9 +127,7 @@ public class JsonWriteSystem : MonoBehaviour
 
             string json = JsonUtility.ToJson(data, true);
             sb.AppendLine("@"+json+ '\n');
-
         }
-
         string path = Application.persistentDataPath + "/Saves/LineDataFile.json";
         File.WriteAllText (path, sb.ToString());
 
@@ -150,10 +140,8 @@ public class JsonWriteSystem : MonoBehaviour
             LoadBucket();
             LoadStars();
             LoadPaintballs();
-            LoadLines();
-           
+            LoadLines();  
         }
-       
         starDrawObject.SetActive(false);
         paintballDrawObject.SetActive(false);
         bucketDrawObject.SetActive(false);
@@ -167,8 +155,7 @@ public class JsonWriteSystem : MonoBehaviour
         string bucketPath = Application.persistentDataPath + "/Saves/BucketDataFile.json";
 
         if (File.Exists(bucketPath))
-        {
-
+        { 
             string jsonData = File.ReadAllText(bucketPath);
             BucketData data = new BucketData();
             data = JsonUtility.FromJson<BucketData>(jsonData);
@@ -185,8 +172,6 @@ public class JsonWriteSystem : MonoBehaviour
             string jsonData = File.ReadAllText(linePath);
             string[] lineDataJson = jsonData.Split('@');
 
-         
-
             foreach(string json in lineDataJson) {
 
                 if (json != lineDataJson[0]) {
@@ -200,10 +185,8 @@ public class JsonWriteSystem : MonoBehaviour
         }
         else {
             Debug.LogError("Line data file not found!");
-        }
-        
-        lineGenerator.MakeInstance(lineDataList);
-        
+        }   
+        lineGenerator.MakeInstance(lineDataList);    
     }
     public void LoadStars() {
         string starPath = Application.persistentDataPath + "/Saves/StarsDataFile.json";
@@ -261,10 +244,8 @@ public class JsonWriteSystem : MonoBehaviour
                     {
                         Debug.LogError($"Failed to deserialize JSON: {ex.Message}");
                     }
-
                 }
             }
-
         }
         else
         {
@@ -279,7 +260,6 @@ public class JsonWriteSystem : MonoBehaviour
     {
         if (pause)
         {
-
             SaveToJson();
         }
     }

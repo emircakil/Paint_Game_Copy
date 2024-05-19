@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Line : MonoBehaviour
 {
+    // Line codes for line prefab. Edge Colliders using for detected collision with eraser.
+
     public LineRenderer lineRenderer;
     List<Vector2> points;
     EdgeCollider2D edgeCollider;

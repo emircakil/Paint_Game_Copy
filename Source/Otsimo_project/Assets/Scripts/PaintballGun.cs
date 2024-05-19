@@ -34,6 +34,8 @@ public class PaintballGun : MonoBehaviour
             Touch touch = Input.touches[0];
             if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
             {
+                // Declares making here because of it must be unique for every paintball instance object.
+
                 colorController = colorGameObject.GetComponent<ColorController>();
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject paintInstance = Instantiate(paintPrefab, mousePosition, Quaternion.identity);
@@ -52,7 +54,9 @@ public class PaintballGun : MonoBehaviour
     }
 
     public void MakeInstance(List<PaintballData> list) {
-        
+
+        // This method provides making lines from datas. It's using when you start game in continue button.
+
         foreach (PaintballData data in list)
         {
 

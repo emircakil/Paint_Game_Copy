@@ -35,6 +35,8 @@ public class StarSprite : MonoBehaviour
 
     public void MakeInstance(List<StarData> list) {
 
+        // This method provides making lines from datas. It's using when you start game in continue button.
+
         foreach (StarData data in list)
         {
             Vector2 pos = new Vector3(data.xPosition, data.yPosition);
@@ -42,8 +44,7 @@ public class StarSprite : MonoBehaviour
             particle = paintInstance.GetComponentInChildren<ParticleSystem>();
             paintInstance.GetComponent<Renderer>().sortingOrder = data.layer;
             particle.Stop();
-          //  paintInstance.GetComponent<Renderer>().sortingOrder = layerManager.getLayer();
-        //    paintInstance.GetComponentInChildren<ParticleSystem>.s
+
         }
 
     }

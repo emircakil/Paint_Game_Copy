@@ -70,6 +70,8 @@ public class LineGenerator : MonoBehaviour
 
     public void MakeInstance(List<LineData> list) {
        
+        // This method provides making lines from datas. It's using when you start game in continue button.
+
         foreach (LineData data in list)
         {
             

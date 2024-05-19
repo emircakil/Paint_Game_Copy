@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    /*
+     This class created for just pc build. That's provides to see what you selected from tools in your cursor.
+     
+     */
+
     [SerializeField] private Texture2D penTexture;
     [SerializeField] private Texture2D eraserTexture;
     [SerializeField] private Texture2D bucketTexture;
     [SerializeField] private Texture2D starTexture;
     [SerializeField] private Texture2D paintballTexture;
     private Vector2 cursorHotspot;
-    string name;
     public void setPen()
     {
         cursorHotspot = new Vector2(penTexture.width / 2 - penTexture.width / 3.5f, penTexture.height / 2 - penTexture.height / 3.5f);
