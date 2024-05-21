@@ -263,4 +263,8 @@ public class JsonWriteSystem : MonoBehaviour
             SaveToJson();
         }
     }
+    private void OnApplicationQuit()
+    {
+        SaveToJson();
+    }
 }
